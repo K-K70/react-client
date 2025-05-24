@@ -1,0 +1,86 @@
+/* 画像切り替えエリア (上部) */
+.image-switcher-area {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.displayed-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 2px solid #ddd;
+  padding: 10px;
+}
+
+/* サムネイルエリア */
+.thumbnail-area {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* バックエンド画像エリア (下部) */
+.backend-image-area {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.backend-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 2px solid #ddd;
+  padding: 10px;
+}
+
+/* アプリ全体の背景色と文字色を統一 */
+.app-container {
+  background-color: #f3efe8;
+  color: #652324;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.main {
+  text-align: center;
+}
+
+/* ローディングアニメーションの親要素 */
+.loading-container {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  justify-content: center; /* 横方向に中央揃え */
+  align-items: center; /* 縦方向に中央揃え */
+  min-height: 300px;
+  width: 100%; /* 親要素を画面幅いっぱいに */
+}
+
+/* ローディングスピナー */
+.loading-spinner {
+  border: 6px dotted #f3efe8;
+  border-top: 6px dotted #652324; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* くるくる回るアニメーション */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.last_train {
+  position: fixed;            /* 常に画面の下に表示 */
+  bottom: 0;                  /* 画面の一番下に配置 */
+  left: 50%;                  /* 左端を画面中央に */
+  transform: translateX(-50%);/* 要素自体を中央に寄せる */
+  background-color: white;
+  border: 2px solid black;    /* 黒い枠線 */
+  width: 800px;
+  color: black;
+}
