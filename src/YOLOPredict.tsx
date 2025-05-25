@@ -4,7 +4,7 @@ export const YOLOPredict = async (imageDataUrl: string) => {
   const formData = new FormData();
   formData.append('image', blob, 'photo.png');
 
-  const response = await fetch('https://github.com/K-K70/flask-backend/predict', {
+  const response = await fetch('https://flask-backend-6a4n.onrender.com/predict', {
     method: 'POST',
     body: formData,
   });
