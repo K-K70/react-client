@@ -1,32 +1,82 @@
-// src/FullScreenImage.tsx
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './FullScreenImage.css';
-import BackendImage from './BackendImage'; // バックエンド画像表示コンポーネント
+
+interface Order {
+  name: string;
+  quantity: number;
+  comment: string;
+  matched?: boolean;
+  matched_label?: string;
+}
+
+interface LocationState {
+  imageSrc: string;
+  label: string;
+  matchedOrders: Order[];
+}
 
 const FullScreenImage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const imageSrc = location.state?.imageSrc;
-  const label = location.state?.label;
+  const state = location.state as LocationState | undefined;
 
-  if (!imageSrc) {
-    return <div>画像が見つかりません</div>;
+  if (!state) {
+    return (
+      <div style={{ padding: 20, textAlign: 'center' }}>
+        <p>表示する画像情報がありません。</p>
+        <button onClick={() => navigate('/')}>トップページへ戻る</button>
+      </div>
+    );
   }
 
+  const { imageSrc, label, matchedOrders } = state;
+  const filteredOrders = matchedOrders.filter(order => order.matched);
+
   return (
-    <div className="fullscreen-container">
+    <div
+      onClick={() => navigate('/')}
+      className="fullscreen-container"
+      aria-label="フルスクリーン画像表示"
+    >
       <div className="main"><h1>結果</h1></div>
-        <img src={imageSrc} alt="Full screen" className="fullscreen-image" />
-        <div className="label-container">
-          <img src="/Alfred/normal.png" alt="Alfred" className="Alfred_normal_image" />
-          <div className="label-bubble">
-            {label && <p>写っているのは<br /><strong>{label}</strong><br />です</p>}
-          </div>
+
+      <img
+        src={imageSrc}
+        alt="認識結果"
+        className="fullscreen-image"
+        draggable={false}
+      />
+
+      <div className="label-container">
+        <img src="/Alfred/normal.png" alt="Alfred" className="Alfred_normal_image" />
+        <div className="label-bubble">
+          <p>写っているのは</p>
+          {filteredOrders.length > 0 ? (
+            <ul className="order-list" style={{ listStyleType: 'none', paddingLeft: 0 }}>
+              {filteredOrders.map((order, idx) => (
+                <li key={idx}>
+                  ・<strong>{order.name}</strong>の<strong>{order.matched_label || order.comment || 'コメントなし'}</strong>{order.quantity}個
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>？？？</p>
+          )}
+          <p>です</p>
         </div>
-        
-      <button className="close-button" onClick={() => navigate(-1)}>戻る</button>
+      </div>
+
+      <button
+        className="close-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate('/');
+        }}
+      >
+        戻る
+      </button>
     </div>
   );
 };

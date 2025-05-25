@@ -80,7 +80,8 @@
   left: 50%;                  /* 左端を画面中央に */
   transform: translateX(-50%);/* 要素自体を中央に寄せる */
   background-color: white;
-  border: 2px solid black;    /* 黒い枠線 */
+  border: 1px solid black;    /* 黒い枠線 */
   width: 800px;
+  height: 170px;
   color: black;
 }

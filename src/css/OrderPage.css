@@ -1,0 +1,44 @@
+/* OrderPage.css */
+
+.order-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* 縦方向中央揃え */
+  align-items: center;      /* 横方向中央揃え */
+  height: 100vh;            /* 画面全体の高さ */
+  background-color: #f3efe8;   /* 背景色はお好みで */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 40px;
+  color: #652324;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #652324;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #84332b;
+}
+
+/* トップページに戻るボタンを下に余白つける場合 */
+.back-button {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #652324;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1rem;
+}

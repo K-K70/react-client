@@ -28,7 +28,7 @@ const getTimeLeft = (trainTime: string): string => {
 const LastTrainInfo: React.FC = () => {
   return (
     <div className="last-train-info">
-      <h3>🚉 名古屋駅路線別終電情報</h3>
+      <h3>🚉 名古屋駅終電情報</h3>
       <ul>
         {Object.entries(lastTrains).map(([line, time]) => (
           <li key={line}>

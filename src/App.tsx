@@ -1,6 +1,3 @@
-// backendkaragazouwouketorihuronntodehyouziF
-
-// App.tsx
 import React, { useState } from 'react';
 import './css/test.css';  // スタイルを適用
 import './ShutterButton.css';  // スタイルを適用
@@ -35,7 +32,24 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <div className="main"><h1>串カツ判定</h1></div>
+      <div className="main">
+        <h1>串カツ判定</h1>
+        {/* ここに注文ページへの遷移ボタンを追加 */}
+        <button
+          onClick={() => navigate('/order')}
+          // style={{
+          //   padding: '8px 16px',
+          //   backgroundColor: '#652324',
+          //   color: '#fff',
+          //   border: 'none',
+          //   borderRadius: 4,
+          //   cursor: 'pointer',
+          //   marginTop: '10px',
+          // }}
+        >
+          注文ページへ
+        </button>
+      </div>
 
       {/* 画像切り替えエリア (上部) */}
       <div className="image-switcher-area">
@@ -47,7 +61,6 @@ const App: React.FC = () => {
             <CameraComponent />
           </div>
         ) : (
-
           <div className="loading-container">
             <div className="loading-spinner"></div> {/* ローディングアニメーション */}
             <p>&lt; カメラ起動 &gt; をクリック</p>
